@@ -178,8 +178,13 @@ private extension IAPDialogViewController {
     
     func setupViews() {
         guard let accentColor = self.accentColor else { return }
-        
-        closeLabelButton.setTitle(NSLocalizedString("Cancel", comment: "Cancel"), for: .normal)
+      
+        let cancelText = NSLocalizedString("Cancel",
+                                           tableName: nil,
+                                           bundle: Bundle(for: IAPDialogViewController.self),
+                                           value: "",
+                                           comment: "Cancel")
+        closeLabelButton.setTitle(cancelText, for: .normal)
         closeLabelButton.sizeToFit()
         
         IAPDialogCell.registerNib(withCollectionView: collectionView)
@@ -198,7 +203,12 @@ private extension IAPDialogViewController {
         
         restoreButton.setTitleColor(accentColor, for: .disabled)
         restoreButton.setTitleColor(accentColor, for: .normal)
-        restoreButton.setTitle(NSLocalizedString("Restore Purchase", comment: "Title for button that restores previous purchases"), for: .normal)
+        let restoreText = NSLocalizedString("Restore Purchase",
+                                            tableName: nil,
+                                            bundle: Bundle(for: IAPDialogViewController.self),
+                                            value: "",
+                                            comment: "Title for button that restores previous purchases")
+        restoreButton.setTitle(restoreText, for: .normal)
         
         if let darkerColor = accentColor.darker(by: 0.2) {
             restoreButton.setTitleColor(darkerColor, for: .highlighted)
