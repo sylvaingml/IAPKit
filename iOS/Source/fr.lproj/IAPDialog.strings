@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "0wu-zr-taA"; */
+"0wu-zr-taA.normalTitle" = "Récupérer vos Achats";
+
+/* Class = "UIButton"; normalTitle = "Close Button"; ObjectID = "eJg-cT-XWa"; */
+"eJg-cT-XWa.normalTitle" = "Bouton de fermeture";
+
+/* Class = "UIButton"; normalTitle = "Buy Now"; ObjectID = "iK0-Or-673"; */
+"iK0-Or-673.normalTitle" = "Acheter Maintenant";

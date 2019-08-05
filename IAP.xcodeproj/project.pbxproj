@@ -100,8 +100,6 @@
 		375AD02E1F6057B300721D4C /* ReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E27911F58AFF9007000C7 /* ReceiptValidator.swift */; };
 		375AD0301F6057B500721D4C /* ReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E27911F58AFF9007000C7 /* ReceiptValidator.swift */; };
 		375AD03C1F60759B00721D4C /* PurchasedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375AD03B1F60759B00721D4C /* PurchasedProduct.swift */; };
-		378AC3841F61A1A600015CC3 /* IAPDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 378AC3831F61A1A600015CC3 /* IAPDialog.storyboard */; };
-		378F6C431F68C6230063EF21 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 378F6C421F68C6090063EF21 /* Localizable.strings */; };
 		37924AA51F97FEB7005DB087 /* UserEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37924AA41F97FEB7005DB087 /* UserEvents.swift */; };
 		37A1509A1F59D82A005C7F00 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 374E27951F58B35E007000C7 /* AppleIncRootCertificate.cer */; };
 		37A1509C1F59D82C005C7F00 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 374E27951F58B35E007000C7 /* AppleIncRootCertificate.cer */; };
@@ -140,6 +138,8 @@
 		7F852C851F51F88B008D8ADD /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F852C821F51F88B008D8ADD /* Typealiases.swift */; };
 		7FFCD9C81F65E92E00A03C58 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFCD9C71F65E92E00A03C58 /* Logging.swift */; };
 		7FFCD9CA1F65E92E00A03C58 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFCD9C71F65E92E00A03C58 /* Logging.swift */; };
+		E4BC011522F8D906000EBFAA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4BC011722F8D906000EBFAA /* Localizable.strings */; };
+		E4BC011922F8D9CE000EBFAA /* IAPDialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4BC011B22F8D9CE000EBFAA /* IAPDialog.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,8 +252,6 @@
 		374E27A01F58C528007000C7 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = lib/libssl.a; sourceTree = "<group>"; };
 		374E27A11F58C529007000C7 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
 		375AD03B1F60759B00721D4C /* PurchasedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedProduct.swift; sourceTree = "<group>"; };
-		378AC3831F61A1A600015CC3 /* IAPDialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IAPDialog.storyboard; sourceTree = "<group>"; };
-		378F6C421F68C6090063EF21 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		37924AA41F97FEB7005DB087 /* UserEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEvents.swift; sourceTree = "<group>"; };
 		37A14FAB1F58D4BA005C7F00 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		37A150A01F5A0180005C7F00 /* PurchaseReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReceipt.swift; sourceTree = "<group>"; };
@@ -285,6 +283,10 @@
 		7F852C7E1F51F87A008D8ADD /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		7F852C821F51F88B008D8ADD /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		7FFCD9C71F65E92E00A03C58 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		E4BC011622F8D906000EBFAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4BC011822F8D90C000EBFAA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4BC011A22F8D9CE000EBFAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/IAPDialog.storyboard; sourceTree = "<group>"; };
+		E4BC011D22F8D9D6000EBFAA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/IAPDialog.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,7 +439,7 @@
 		378F6C411F68C5F70063EF21 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				378F6C421F68C6090063EF21 /* Localizable.strings */,
+				E4BC011722F8D906000EBFAA /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -556,7 +558,7 @@
 				374D833A1F66EEA700EA503C /* Extensions */,
 				7F5C9E891F51F5A1002B41B4 /* IAP-iOS.swift */,
 				374E27821F577C3C007000C7 /* IAPDialogViewController.swift */,
-				378AC3831F61A1A600015CC3 /* IAPDialog.storyboard */,
+				E4BC011B22F8D9CE000EBFAA /* IAPDialog.storyboard */,
 				79CE6782202CD5A10003C7CD /* IAPDialogCell.swift */,
 				79CE6786202CD91F0003C7CD /* IAPDialogCell.xib */,
 				373359791F63766B0066E08E /* Assets.xcassets */,
@@ -762,7 +764,7 @@
 				TargetAttributes = {
 					7F5C9E291F51F3AC002B41B4 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1030;
 					};
 					7F5C9E321F51F3AC002B41B4 = {
 						CreatedOnToolsVersion = 9.0;
@@ -782,6 +784,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
+				fr,
 			);
 			mainGroup = 7F5C9E1E1F51F37E002B41B4;
 			productRefGroup = 7F5C9E2B1F51F3AC002B41B4 /* Products */;
@@ -803,9 +807,9 @@
 			files = (
 				37A1509A1F59D82A005C7F00 /* AppleIncRootCertificate.cer in Resources */,
 				79CE6787202CD91F0003C7CD /* IAPDialogCell.xib in Resources */,
-				378F6C431F68C6230063EF21 /* Localizable.strings in Resources */,
+				E4BC011522F8D906000EBFAA /* Localizable.strings in Resources */,
 				3733597A1F63766B0066E08E /* Assets.xcassets in Resources */,
-				378AC3841F61A1A600015CC3 /* IAPDialog.storyboard in Resources */,
+				E4BC011922F8D9CE000EBFAA /* IAPDialog.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -916,6 +920,27 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		E4BC011722F8D906000EBFAA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4BC011622F8D906000EBFAA /* en */,
+				E4BC011822F8D90C000EBFAA /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E4BC011B22F8D9CE000EBFAA /* IAPDialog.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4BC011A22F8D9CE000EBFAA /* Base */,
+				E4BC011D22F8D9D6000EBFAA /* fr */,
+			);
+			name = IAPDialog.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		7F5C9E231F51F37E002B41B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1019,7 +1044,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 432ZXYXDNY;
+				DEVELOPMENT_TEAM = KC7UKYADNB;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1061,7 +1086,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/iOS/OpenSSL/**";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1102,7 +1127,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 432ZXYXDNY;
+				DEVELOPMENT_TEAM = KC7UKYADNB;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1136,7 +1161,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/iOS/OpenSSL/**";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
