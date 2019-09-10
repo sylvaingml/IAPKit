@@ -58,7 +58,9 @@ class IAPDialogViewController: IAPViewController {
     private var currentProduct: StoreProduct?
     private let collectionViewLayout = UICollectionViewFlowLayout()
     private var accentColor: IAPColor?
+    private var accentComplementaryColor: IAPColor?
     private var selectionColor: IAPColor?
+    private var selectedTitleColor: IAPColor?
     private var selectedIndex: IndexPath?
     
     
@@ -67,16 +69,18 @@ class IAPDialogViewController: IAPViewController {
     var cancellationHandler: IAPCancellationHandler?
     
     
-    // MARK: Public Computed Properties
+  // MARK: Public Computed Properties
     
-    var products = [StoreProduct]() {
-        didSet {
-            collectionView.reloadData()
-            UIView.animate(withDuration: 0.2) {
-                self.activityView.alpha = 0.0
-            }
+  var products = [StoreProduct]() {
+    didSet {
+      DispatchQueue.main.async {
+        self.collectionView.reloadData()
+        UIView.animate(withDuration: 0.2) {
+          self.activityView.alpha = 0.0
         }
+      }
     }
+  }
     
     
     // MARK: Static Constants
@@ -92,20 +96,25 @@ class IAPDialogViewController: IAPViewController {
     private let buyNowButtonTopPadding = CGFloat(40)
     
     
-    // MARK: Factory
-    
-    static func make(accentColor: IAPColor, cancellationHandler: IAPCancellationHandler?) -> IAPDialogViewController {
-        // The Storyboard is in the framework bundle
-        let frameworkBundle = Bundle(for: IAPDialogViewController.self)
-        let controller = UIStoryboard(name: "IAPDialog", bundle: frameworkBundle).instantiateInitialViewController() as! IAPDialogViewController
-        controller.modalPresentationStyle = .formSheet
-        controller.preferredContentSize = CGSize(width: 540, height: 620)
-        controller.accentColor = accentColor
-        controller.selectionColor = accentColor.withAlphaComponent(0.4)
-        controller.cancellationHandler = cancellationHandler
-        return controller
-    }
-    
+  // MARK: Factory
+  
+  static func make(accentColor: IAPColor,
+                   accentComplementaryColor: IAPColor?,
+                   selectedTitleColor: IAPColor?,
+                   cancellationHandler: IAPCancellationHandler?) -> IAPDialogViewController {
+    // The Storyboard is in the framework bundle
+    let frameworkBundle = Bundle(for: IAPDialogViewController.self)
+    let controller = UIStoryboard(name: "IAPDialog", bundle: frameworkBundle).instantiateInitialViewController() as! IAPDialogViewController
+    controller.modalPresentationStyle = .formSheet
+    controller.preferredContentSize = CGSize(width: 540, height: 620)
+    controller.accentColor = accentColor
+    controller.selectionColor = accentColor.withAlphaComponent(0.8)
+    controller.accentComplementaryColor = accentComplementaryColor
+    controller.selectedTitleColor = selectedTitleColor
+    controller.cancellationHandler = cancellationHandler
+    return controller
+  }
+  
     
     // MARK: Lifecycle
     
@@ -175,46 +184,47 @@ private extension IAPDialogViewController {
         buyNowButtonBottomToViewConstraint.isActive = false
         buyNowButtonBottomToRestoreConstraint.isActive = true
     }
+  
+  func setupViews() {
+    guard let accentColor = self.accentColor else { return }
     
-    func setupViews() {
-        guard let accentColor = self.accentColor else { return }
-      
-        let cancelText = NSLocalizedString("Cancel",
-                                           tableName: nil,
-                                           bundle: Bundle(for: IAPDialogViewController.self),
-                                           value: "",
-                                           comment: "Cancel")
-        closeLabelButton.setTitle(cancelText, for: .normal)
-        closeLabelButton.sizeToFit()
-        
-        IAPDialogCell.registerNib(withCollectionView: collectionView)
-        collectionView.clipsToBounds = false
-        collectionViewLayout.scrollDirection = .vertical
-        collectionView.collectionViewLayout = collectionViewLayout
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        // This needs to be set to true.  Otherwise
-        // when a long press is triggered on a cell
-        // all cells will be deselected.
-        collectionView.allowsMultipleSelection = true
-        
-        buyNowButton.accentColor = accentColor
-        buyNowButton.isEnabled = false
-        
-        restoreButton.setTitleColor(accentColor, for: .disabled)
-        restoreButton.setTitleColor(accentColor, for: .normal)
-        let restoreText = NSLocalizedString("Restore Purchase",
-                                            tableName: nil,
-                                            bundle: Bundle(for: IAPDialogViewController.self),
-                                            value: "",
-                                            comment: "Title for button that restores previous purchases")
-        restoreButton.setTitle(restoreText, for: .normal)
-        
-        if let darkerColor = accentColor.darker(by: 0.2) {
-            restoreButton.setTitleColor(darkerColor, for: .highlighted)
-            restoreButton.setTitleColor(darkerColor, for: .selected)
-        }
+    let cancelText = NSLocalizedString("Cancel",
+                                       tableName: nil,
+                                       bundle: Bundle(for: IAPDialogViewController.self),
+                                       value: "",
+                                       comment: "Cancel")
+    closeLabelButton.setTitle(cancelText, for: .normal)
+    closeLabelButton.sizeToFit()
+    
+    IAPDialogCell.registerNib(withCollectionView: collectionView)
+    collectionView.clipsToBounds = false
+    collectionViewLayout.scrollDirection = .vertical
+    collectionView.collectionViewLayout = collectionViewLayout
+    collectionView.showsVerticalScrollIndicator = false
+    collectionView.showsHorizontalScrollIndicator = false
+    // This needs to be set to true.  Otherwise
+    // when a long press is triggered on a cell
+    // all cells will be deselected.
+    collectionView.allowsMultipleSelection = true
+    
+    buyNowButton.accentColor = accentColor
+    buyNowButton.isEnabled = false
+    buyNowButton.setTitleColor(accentComplementaryColor, for: .normal)
+    
+    restoreButton.setTitleColor(accentColor, for: .disabled)
+    restoreButton.setTitleColor(accentColor, for: .normal)
+    let restoreText = NSLocalizedString("Restore Purchase",
+                                        tableName: nil,
+                                        bundle: Bundle(for: IAPDialogViewController.self),
+                                        value: "",
+                                        comment: "Title for button that restores previous purchases")
+    restoreButton.setTitle(restoreText, for: .normal)
+    
+    if let darkerColor = accentColor.darker(by: 0.2) {
+      restoreButton.setTitleColor(darkerColor, for: .highlighted)
+      restoreButton.setTitleColor(darkerColor, for: .selected)
     }
+  }
     
     func showActivityView() {
         UIView.animate(withDuration: 0.2) {
@@ -300,21 +310,28 @@ private extension IAPDialogViewController {
 // MARK: - UICollectionViewDelegate
 
 extension IAPDialogViewController: UICollectionViewDelegate {
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    selectedIndex = indexPath
+    currentProduct = products[indexPath.row]
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndex = indexPath
-        currentProduct = products[indexPath.row]
-        
-        let storeProduct = products[indexPath.row]
-        buyNowButton.setTitle(storeProduct.callToActionButtonText, for: .normal)
-        buyNowButton.isEnabled = true
-        
-        collectionView.indexPathsForSelectedItems?.forEach({
-            if $0 != indexPath {
-                collectionView.deselectItem(at: $0, animated: true)
-            }
-        })
-    }
+    let storeProduct = products[indexPath.row]
+    buyNowButton.setTitle(storeProduct.callToActionButtonText, for: .normal)
+    buyNowButton.isEnabled = true
+    
+    collectionView.indexPathsForSelectedItems?.forEach({
+      if $0 != indexPath {
+        collectionView.deselectItem(at: $0, animated: true)
+      }
+    })
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    selectedIndex = nil
+    currentProduct = nil
+    
+    buyNowButton.isEnabled = false
+  }
 }
 
 
@@ -331,8 +348,10 @@ extension IAPDialogViewController: UICollectionViewDataSource {
 
         let product = products[indexPath.row]
         let selectedColor = self.selectionColor ?? .baseColor
-        let selectedTitleColor = self.accentColor ?? .baseColor
-        cell.configureCell(withProduct: product, selectedColor: selectedColor, selectedTitleColor: selectedTitleColor)
+        let selectedTitleColor = self.selectedTitleColor ?? .baseColor
+        cell.configureCell(withProduct: product,
+                           selectedColor: selectedColor,
+                           selectedTitleColor: selectedTitleColor)
         
         return cell
     }

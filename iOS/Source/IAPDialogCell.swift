@@ -78,22 +78,21 @@ class IAPDialogCell: UICollectionViewCell {
     var selectedTitleColor: IAPColor?
     
     
-    // MARK: Public Property Overrides
+  // MARK: Public Property Overrides
     
-    override var isSelected: Bool {
-        didSet {
-            if !isSelected {
-                cellBorder.alpha = 0
-                cellTitle.textColor = .labelColor
-                
-            } else {
-                cellBorder.alpha = 1
-                
-                let titleColor = selectedTitleColor ?? .baseColor
-                cellTitle.textColor = titleColor
-            }
-        }
+  override var isSelected: Bool {
+    didSet {
+      if !isSelected {
+        cellBorder.alpha = 0
+        cellTitle.textColor = .labelColor
+      } else {
+        cellBorder.alpha = 1
+        
+        let titleColor = selectedTitleColor ?? .baseColor
+        cellTitle.textColor = titleColor
+      }
     }
+  }
     
     
     // MARK: Lifecycle

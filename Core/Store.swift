@@ -51,6 +51,12 @@ public class Store<Product: Purchaseable> {
         
         return ReceiptValidator.validatedProducts
     }
+  
+  public var storeBackgroundColor: UIColor?
+  
+  public var tintComplementaryColor: UIColor?
+  
+  public var titleAccentColor: UIColor?
     
     
     /// Designated Initializer
@@ -134,25 +140,30 @@ public class Store<Product: Purchaseable> {
     
     
     
-    /// Walks the user through a purchase of one or more products.
-    ///
-    /// - Parameters:
-    ///   - presentingViewController: ViewController to present the modal view above
-    ///   - completion: When StoreKit dismisses the modal view controller or the user dismisses the modal view controller by hitting the close button
-    public func presentAvailablePurchases(from presentingViewController: IAPViewController, completion: IAPCompletionHandler? = nil) {
-        
-        modalDismissalCompletion = completion
-        
-        let modalViewController = IAPDialogViewController.make(accentColor: Product.accentColorForStore,
-                                                               cancellationHandler: {
-                                                                self.dismissAvailablePurchasesModal(wasCancelled: true)
-        })
-        
-        presentingViewController.present(modalViewController, animated: true, completion: nil)
-        self.modalViewController = modalViewController
-        refreshProductsList()
-        
+  /// Walks the user through a purchase of one or more products.
+  ///
+  /// - Parameters:
+  ///   - presentingViewController: ViewController to present the modal view above
+  ///   - completion: When StoreKit dismisses the modal view controller or the user dismisses the modal view controller by hitting the close button
+  public func presentAvailablePurchases(from presentingViewController: IAPViewController, completion: IAPCompletionHandler? = nil) {
+    
+    modalDismissalCompletion = completion
+    
+    let modalViewController = IAPDialogViewController.make(accentColor: Product.accentColorForStore,
+                                                           accentComplementaryColor: tintComplementaryColor,
+                                                           selectedTitleColor: titleAccentColor,
+                                                           cancellationHandler: {
+                                                            self.dismissAvailablePurchasesModal(wasCancelled: true)
+    })
+    if let bgColor = storeBackgroundColor {
+      modalViewController.view.backgroundColor = bgColor
     }
+    
+    presentingViewController.present(modalViewController, animated: true, completion: nil)
+    self.modalViewController = modalViewController
+    refreshProductsList()
+    
+  }
     
     
     private func refreshProductsList() {
